@@ -40,12 +40,18 @@ if [ ! -f "$BUILD_DIR/requirements-kadet.txt" ]; then
 else
   echo "requirements-kadet.txt is not empty, here are the contents" | indent
   cat "$BUILD_DIR/requirements-kadet.txt"
+
+  echo "exporting variables" | indent
+  export_env_dir
   
+  echo "installing dependencies" | indent
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
-  cat "${BITBUCKET_TOKEN}"
+  echo "token" | indent
+  echo "${BITBUCKET_TOKEN}" | indent
 
+  echo "installing from git" | indent
   /app/.heroku/python/bin/pip install git+https://isccarrasco:${BITBUCKET_TOKEN}@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
