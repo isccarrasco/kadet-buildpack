@@ -29,46 +29,51 @@ export_env_dir() {
   fi
 }
 
-echo "-----> Found a requirements-kadet.txt"
+echo "-----> Installing packages required for KADET-Core"
 
-# if kadet-requirements.txt has contents, display them (indented to align)
+# if BITBUCKET_TOKEN variable exists, install the KADET-Core library
 # otherwise error
 
-if [ ! -f "$BUILD_DIR/requirements-kadet.txt" ]; then
-  echo "requirements-kadet.txt was empty"
+if [ ! -f "$ENV_DIR/BITBUCKET_TOKEN" ]; then
+  echo "The BITBUCKET_TOKEN variable for accessing the repository is missing."
   exit 1
 else
-  # echo "requirements-kadet.txt is not empty, here are the contents" | cleanup | indent
-  # cat "$BUILD_DIR/requirements-kadet.txt" | cleanup | indent
-
-  echo "exporting variables" | cleanup | indent
+  echo "Loading variables" | cleanup | indent
   export_env_dir $ENV_DIR
 
-  # echo "installing graphviz" | cleanup | indent
-  # APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
-  # apt-get install -y graphviz graphviz-dev | cleanup | indent
-
-  echo "installing gosdt" | cleanup | indent
-  git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt 
+  echo "Installing gosdt library" | cleanup | indent
+  git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
   cd gosdt
+
+  echo "Installing Boost" | cleanup | indent
+  auto/boost.sh --install
+
+  echo "Installing GMP" | cleanup | indent
+  auto/gmp.sh --install
+
+  echo "Installing Intel TBB" | cleanup | indent
+  auto/tbb.sh --install
+
+  echo "Installing WiredTiger" | cleanup | indent
+  auto/wiredtiger.sh --install
+
+  echo "Installing OpenCL" | cleanup | indent
+  auto/opencl.sh --install
+
   aclocal
   automake --add-missing
   ./autobuild --install
   ./autobuild --install-python
   
-  echo "installing dependencies" | cleanup | indent
+  echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip
   # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install sklearn --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install ipython --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+  /app/.heroku/python/bin/pip install sklearn
+  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
+  /app/.heroku/python/bin/pip install ipython
   echo "finishing dependencies instalation" | indent
 
-  echo "token" | indent
-  echo "$BITBUCKET_TOKEN" | indent
-  # set BITBUCKET_TOKEN= cat $ENV_DIR/BITBUCKET_TOKEN
-
-  echo "installing from git" | indent
+  echo "Installing KADET from git repository" | indent
   /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
