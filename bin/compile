@@ -42,17 +42,19 @@ else
   cat "$BUILD_DIR/requirements-kadet.txt"
 
   echo "exporting variables" | indent
-  export_env_dir
+  export_env_dir($ENV_DIR)
   
   echo "installing dependencies" | indent
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+  echo "finishing dependencies instalation" | indent
 
   echo "token" | indent
-  echo "${BITBUCKET_TOKEN}" | indent
+  echo "$BITBUCKET_TOKEN" | indent
+  # set BITBUCKET_TOKEN= cat $ENV_DIR/BITBUCKET_TOKEN
 
   echo "installing from git" | indent
-  /app/.heroku/python/bin/pip install git+https://isccarrasco:${BITBUCKET_TOKEN}@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
 
