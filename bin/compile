@@ -27,7 +27,7 @@ if [ ! -f "$BUILD_DIR/requirements-kadet.txt" ]; then
 else
   echo "requirements-kadet.txt is not empty, here are the contents" | indent
   cat "$BUILD_DIR/requirements-kadet.txt"
-  /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-pre.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+  /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
 fi | indent
 
