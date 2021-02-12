@@ -12,16 +12,22 @@ indent() {
   sed -u 's/^/       /'
 }
 
+cleanup() {
+  sed -e 's/\.\.\.\+/.../g' | sed -e '/already satisfied/Id' | sed -e '/No files were found to uninstall/Id' | sed -e '/Overwriting/Id' | sed -e '/python executable/Id' | sed -e '/no previously-included files/Id'
+}
+
 echo "-----> Found a requirements-kadet.txt"
 
 # if kadet-requirements.txt has contents, display them (indented to align)
 # otherwise error
 
-if [ ! -s "$BUIKD_DIR/requirements-kadet.txt" ]; then
+if [ ! -s "$BUILD_DIR/requirements-kadet.txt" ]; then
   echo "requirements-kadet.txt was empty"
   exit 1
 else
   echo "requirements-kadet.txt is not empty, here are the contents" | indent
   cat "$BUILD_DIR/requirements-kadet.txt"
+  /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-pre.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+
 fi | indent
 

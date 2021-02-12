@@ -7,6 +7,7 @@ if [ -f "$BUILD_DIR/requirements-kadet.txt" ]; then
     echo "Installing KADET dependencies"
     exit 0
 else
+    echo "The requirements-kadet.txt is missing"
     exit 1
 fi
 
