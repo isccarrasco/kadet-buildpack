@@ -6,4 +6,3 @@ BUILD_DIR=$1
 cat << EOF
 ---
 EOF
-
