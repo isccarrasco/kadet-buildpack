@@ -42,7 +42,7 @@ else
   cat "$BUILD_DIR/requirements-kadet.txt" | cleanup | indent
 
   echo "exporting variables" | cleanup | indent
-  export_env_dir $ENV_DIR | cleanup | indent
+  export_env_dir $ENV_DIR
 
   echo "installing graphviz" | cleanup | indent
   # APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
