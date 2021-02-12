@@ -45,7 +45,8 @@ else
   export_env_dir $ENV_DIR | cleanup | indent
 
   echo "installing graphviz" | cleanup | indent
-  apt-get install -y graphviz graphviz-dev | cleanup | indent
+  # APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
+  # apt-get install -y graphviz graphviz-dev | cleanup | indent
   
   echo "installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
