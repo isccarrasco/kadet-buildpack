@@ -29,5 +29,7 @@ else
   cat "$BUILD_DIR/requirements-kadet.txt"
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
+  /app/.heroku/python/bin/pip install git+https://isccarrasco:${ENV_DIR}/BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+
 fi | indent
 
