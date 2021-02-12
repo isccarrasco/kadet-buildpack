@@ -21,7 +21,7 @@ echo "-----> Found a requirements-kadet.txt"
 # if kadet-requirements.txt has contents, display them (indented to align)
 # otherwise error
 
-if [ ! -s "$BUILD_DIR/requirements-kadet.txt" ]; then
+if [ ! -f "$BUILD_DIR/requirements-kadet.txt" ]; then
   echo "requirements-kadet.txt was empty"
   exit 1
 else
