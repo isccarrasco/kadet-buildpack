@@ -16,6 +16,19 @@ cleanup() {
   sed -e 's/\.\.\.\+/.../g' | sed -e '/already satisfied/Id' | sed -e '/No files were found to uninstall/Id' | sed -e '/Overwriting/Id' | sed -e '/python executable/Id' | sed -e '/no previously-included files/Id'
 }
 
+export_env_dir() {
+  env_dir=$1
+  acceptlist_regex=${2:-''}
+  denylist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
+  if [ -d "$env_dir" ]; then
+    for e in $(ls $env_dir); do
+      echo "$e" | grep -E "$acceptlist_regex" | grep -qvE "$denylist_regex" &&
+      export "$e=$(cat $env_dir/$e)"
+      :
+    done
+  fi
+}
+
 echo "-----> Found a requirements-kadet.txt"
 
 # if kadet-requirements.txt has contents, display them (indented to align)
@@ -31,9 +44,9 @@ else
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
-  cat "${ENV_DIR}/BITBUCKET_TOKEN"
+  cat "${BITBUCKET_TOKEN}"
 
-  # /app/.heroku/python/bin/pip install git+https://isccarrasco:${ENV_DIR}/BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+  /app/.heroku/python/bin/pip install git+https://isccarrasco:${BITBUCKET_TOKEN}@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
 
