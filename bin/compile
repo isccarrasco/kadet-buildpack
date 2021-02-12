@@ -45,21 +45,6 @@ else
   git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
   cd gosdt
 
-  echo "Installing Boost" | cleanup | indent
-  auto/boost.sh --install
-
-  echo "Installing GMP" | cleanup | indent
-  auto/gmp.sh --install
-
-  echo "Installing Intel TBB" | cleanup | indent
-  auto/tbb.sh --install
-
-  echo "Installing WiredTiger" | cleanup | indent
-  auto/wiredtiger.sh --install
-
-  echo "Installing OpenCL" | cleanup | indent
-  auto/opencl.sh --install
-
   aclocal
   automake --add-missing
   ./autobuild --install
@@ -68,13 +53,13 @@ else
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip
   # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install sklearn
-  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
-  /app/.heroku/python/bin/pip install ipython
+  # /app/.heroku/python/bin/pip install sklearn
+  # /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
+  # /app/.heroku/python/bin/pip install ipython
   echo "finishing dependencies instalation" | indent
 
   echo "Installing KADET from git repository" | indent
-  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+  # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
 
