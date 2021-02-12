@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+BUILD_DIR=$1
 
 # Validating that the dependencies are declared
-if [ -f $1/requirements-kadet.txt]; then
+if [ -f "$BUILD_DIR/requirements-kadet.txt"]; then
     echo "Installing KADET dependencies"
     exit 0
 else

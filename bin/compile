@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+# Setup Path variables, for later use in the Buildpack.
+BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
+ROOT_DIR=$(dirname "$BIN_DIR")
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
 
 indent() {
   sed -u 's/^/       /'
@@ -9,11 +17,11 @@ echo "-----> Found a reqiurements-kadet.txt"
 # if kadet-requirements.txt has contents, display them (indented to align)
 # otherwise error
 
-if [ ! -s $1/requirements-kadet.txt ]; then
+if [ ! -s "$BUIKD_DIR/requirements-kadet.txt" ]; then
   echo "requirements-kadet.txt was empty"
   exit 1
 else
   echo "requirements-kadet.txt is not empty, here are the contents" | indent
-  cat $1/requirements-kadet.txt
+  cat "$BUILD_DIR/requirements-kadet.txt"
 fi | indent
 
