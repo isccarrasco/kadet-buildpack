@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Validating that the dependencies are declared
+if [ -f $1/requirements-kadet.txt]; then
+    echo "Installing KADET dependencies"
+    exit 0
+else
+    exit 1
+fi
+
