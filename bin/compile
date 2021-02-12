@@ -42,7 +42,7 @@ else
   cat "$BUILD_DIR/requirements-kadet.txt"
 
   echo "exporting variables" | indent
-  export_env_dir($ENV_DIR)
+  export_env_dir $ENV_DIR
   
   echo "installing dependencies" | indent
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
