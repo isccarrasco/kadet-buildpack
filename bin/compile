@@ -38,13 +38,16 @@ if [ ! -f "$BUILD_DIR/requirements-kadet.txt" ]; then
   echo "requirements-kadet.txt was empty"
   exit 1
 else
-  echo "requirements-kadet.txt is not empty, here are the contents" | indent
-  cat "$BUILD_DIR/requirements-kadet.txt"
+  echo "requirements-kadet.txt is not empty, here are the contents" | cleanup | indent
+  cat "$BUILD_DIR/requirements-kadet.txt" | cleanup | indent
 
-  echo "exporting variables" | indent
-  export_env_dir $ENV_DIR
+  echo "exporting variables" | cleanup | indent
+  export_env_dir $ENV_DIR | cleanup | indent
+
+  echo "installing graphviz" | cleanup | indent
+  apt-get install -y graphviz graphviz-dev | cleanup | indent
   
-  echo "installing dependencies" | indent
+  echo "installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   echo "finishing dependencies instalation" | indent
