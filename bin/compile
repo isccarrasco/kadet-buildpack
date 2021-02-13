@@ -51,7 +51,7 @@ else
   automake --add-missing
   ./autobuild --install
   ./autobuild --install-python
-  
+
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip
   # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
