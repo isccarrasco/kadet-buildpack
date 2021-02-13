@@ -50,7 +50,7 @@ else
 
   # aclocal
   # automake --add-missing
-  # ./autobuild --install
+  ./autobuild --install
   ./autobuild --install-python
   
   echo "Installing dependencies" | cleanup | indent
