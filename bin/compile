@@ -47,9 +47,9 @@ else
   echo "Installing gosdt library" | cleanup | indent
   git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
   cd gosdt
-  # aclocal
+  aclocal
   automake --add-missing
-  ./autobuild --configure
+  # ./autobuild --configure
   ./autobuild --install
   ./autobuild --install-python
 
