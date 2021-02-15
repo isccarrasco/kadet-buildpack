@@ -45,19 +45,19 @@ else
   export_env_dir $ENV_DIR
 
   echo "Installing gosdt library" | cleanup | indent
-  # git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
-  # cd gosdt
-  # mkdir m4
+  git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
+  cd gosdt
+  mkdir m4
 
-  # mkdir bin
-  # export DESTDIR="/app/gosdt/bin"
+  mkdir bin
+  export DESTDIR="/app/gosdt/bin"
 
-  # aclocal
-  # automake --add-missing
+  aclocal
+  automake --add-missing
   
-  # # ./autobuild --configure
-  # ./autobuild --install
-  # ./autobuild --install-python
+  ./configure
+  ./autobuild --install
+  ./autobuild --install-python
 
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip
