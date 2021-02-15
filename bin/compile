@@ -53,8 +53,8 @@ else
   export DESTDIR="/app/gosdt/bin"
 
   echo "Preparing missing variables" | cleanup | indent
-  aclocal
-  automake --add-missing
+  aclocal  | cleanup | indent
+  automake --add-missing  | cleanup | indent
   
   # echo "Configure GOSDT" | cleanup | indent
   # ./configure
@@ -63,18 +63,18 @@ else
   ./autobuild --install  | cleanup | indent
 
   echo "Install GOSDT as Python lib" | cleanup | indent
-  ./autobuild --install-python
+  ./autobuild --install-python  | cleanup | indent
 
   echo "Installing dependencies" | cleanup | indent
-  /app/.heroku/python/bin/python -m pip install --upgrade pip
+  /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
   # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install sklearn
-  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
-  /app/.heroku/python/bin/pip install ipython
-  echo "finishing dependencies instalation" | indent
+  /app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
+  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
+  /app/.heroku/python/bin/pip install ipython  | cleanup | indent
+  echo "finishing dependencies instalation"  | cleanup | indent
 
-  echo "Installing KADET from git repository" | indent
-  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+  echo "Installing KADET from git repository"  | cleanup | indent
+  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | cleanup | indent
 
 fi | indent
 
