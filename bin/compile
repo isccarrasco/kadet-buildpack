@@ -44,23 +44,23 @@ else
   echo "Loading variables" | cleanup | indent
   export_env_dir $ENV_DIR
 
-  echo "Installing gosdt library" | cleanup | indent
-  git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
-  cd gosdt
-  mkdir m4
+  # echo "Installing gosdt library" | cleanup | indent
+  # git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
+  # cd gosdt
+  # mkdir m4
 
-  mkdir bin
-  export DESTDIR="/app/gosdt/bin"
+  # mkdir bin
+  # export DESTDIR="/app/gosdt/bin"
 
-  echo "Preparing missing variables" | cleanup | indent
-  aclocal  | cleanup | indent
-  automake --add-missing  | cleanup | indent
+  # echo "Preparing missing variables" | cleanup | indent
+  # aclocal  | cleanup | indent
+  # automake --add-missing  | cleanup | indent
 
-  echo "Configure and Install GOSDT" | cleanup | indent
-  ./autobuild --install  | cleanup | indent
+  # echo "Configure and Install GOSDT" | cleanup | indent
+  # ./autobuild --install  | cleanup | indent
 
-  echo "Install GOSDT as Python lib" | cleanup | indent
-  ./autobuild --install-python  | cleanup | indent
+  # echo "Install GOSDT as Python lib" | cleanup | indent
+  # ./autobuild --install-python  | cleanup | indent
 
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
