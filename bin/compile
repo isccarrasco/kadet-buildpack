@@ -69,7 +69,7 @@ else
   /app/.heroku/python/bin/python -m pip install --upgrade pip
   # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
   # /app/.heroku/python/bin/pip install sklearn
-  # /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
+  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"
   # /app/.heroku/python/bin/pip install ipython
   echo "finishing dependencies instalation" | indent
 
