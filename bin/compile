@@ -52,11 +52,17 @@ else
   mkdir bin
   export DESTDIR="/app/gosdt/bin"
 
+  echo "Preparing missing variables" | cleanup | indent
   aclocal
   automake --add-missing
   
+  echo "Configure GOSDT" | cleanup | indent
   ./configure
+
+  echo "Install GOSDT" | cleanup | indent
   ./autobuild --install
+
+  echo "Install GOSDT as Python lib" | cleanup | indent
   ./autobuild --install-python
 
   echo "Installing dependencies" | cleanup | indent
