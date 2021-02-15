@@ -69,8 +69,8 @@ else
   /app/.heroku/python/bin/pip install ipython  | cleanup | indent
   echo "finishing dependencies instalation"  | cleanup | indent
 
-  # echo "Installing KADET from git repository"  | cleanup | indent
-  # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | cleanup | indent
+  echo "Installing KADET from git repository"  | cleanup | indent
+  app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | cleanup | indent
 
 fi | indent
 
