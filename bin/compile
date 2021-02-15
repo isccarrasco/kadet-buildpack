@@ -55,9 +55,6 @@ else
   echo "Preparing missing variables" | cleanup | indent
   aclocal  | cleanup | indent
   automake --add-missing  | cleanup | indent
-  
-  # echo "Configure GOSDT" | cleanup | indent
-  # ./configure
 
   echo "Configure and Install GOSDT" | cleanup | indent
   ./autobuild --install  | cleanup | indent
@@ -67,9 +64,8 @@ else
 
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
-  # /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements-kadet.txt" --no-cache-dir --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-  /app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
+  /app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
   /app/.heroku/python/bin/pip install ipython  | cleanup | indent
   echo "finishing dependencies instalation"  | cleanup | indent
 
