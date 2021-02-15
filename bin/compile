@@ -56,11 +56,11 @@ else
   aclocal
   automake --add-missing
   
-  echo "Configure GOSDT" | cleanup | indent
-  ./configure
+  # echo "Configure GOSDT" | cleanup | indent
+  # ./configure
 
-  echo "Install GOSDT" | cleanup | indent
-  ./autobuild --install
+  echo "Configure and Install GOSDT" | cleanup | indent
+  ./autobuild --install  | cleanup | indent
 
   echo "Install GOSDT as Python lib" | cleanup | indent
   ./autobuild --install-python
@@ -74,7 +74,7 @@ else
   echo "finishing dependencies instalation" | indent
 
   echo "Installing KADET from git repository" | indent
-  # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
+  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib
 
 fi | indent
 
