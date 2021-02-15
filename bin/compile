@@ -48,6 +48,7 @@ else
   git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
   cd gosdt
   mkdir m4
+  midir missing
   aclocal
   automake --add-missing
   # ./autobuild --configure
