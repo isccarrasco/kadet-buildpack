@@ -67,7 +67,7 @@ else
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
   #/app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
   #/app/.heroku/python/bin/pip install ipython  | cleanup | indent
-  /app/.heroku/python/bin/pip install gmpy2  | cleanup | indent
+  /app/.heroku/python/bin/pip install gmpy2==2.1.0a2  | cleanup | indent
   echo "finishing dependencies instalation"  | cleanup | indent
 
   # echo "Installing KADET from git repository"  | cleanup | indent
