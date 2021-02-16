@@ -3,11 +3,11 @@
 BUILD_DIR=$1
 
 # Validating that the dependencies are declared
-if [ -f "$BUILD_DIR/requirements-kadet.txt" ]; then
+if [ -f "$BUILD_DIR/requirements.txt" ]; then
     echo "Installing KADET dependencies"
     exit 0
 else
-    echo "The requirements-kadet.txt is missing"
+    echo "The requirements.txt is missing"
     exit 1
 fi
 
