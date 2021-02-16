@@ -63,7 +63,7 @@ else
   # ./autobuild --install-python  | cleanup | indent
 
   echo "Install GMP" | cleanup | indent
-  echo pwd  | cleanup | indent
+  echo "$(pwd)"  | cleanup | indent
   mkdir gmp
   cd gmp
   curl -L --silent https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
