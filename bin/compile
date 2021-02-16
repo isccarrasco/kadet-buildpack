@@ -70,9 +70,9 @@ else
   tar -xzf gmp-6.2.1.tar.lz -C gmp-6.2.1 --strip-components 1
   cd gmp-6.2.1
   ./configure
-  make
-  make check
-  make install
+  # make
+  # make check
+  # make install
 
   echo pwd | cleanup | indent
   cd ../../
