@@ -79,36 +79,36 @@ else
   echo pwd | cleanup | indent
 
 
-  echo "Install MPFR" | cleanup | indent
-  echo pwd  | cleanup | indent
-  mkdir mpfr
-  cd mpfr
-  curl -L --silent https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
-  tar -xzf mpfr-4.1.0.tar.xz -C mpfr-4.1.0 --strip-components 1
-  cd mpfr-4.1.0
-  make
-  make check
-  make install
+  # echo "Install MPFR" | cleanup | indent
+  # echo pwd  | cleanup | indent
+  # mkdir mpfr
+  # cd mpfr
+  # curl -L --silent https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
+  # tar -xzf mpfr-4.1.0.tar.xz -C mpfr-4.1.0 --strip-components 1
+  # cd mpfr-4.1.0
+  # make
+  # make check
+  # make install
 
-  echo pwd  | cleanup | indent
-  cd ../../
-  echo pwd  | cleanup | indent
+  # echo pwd  | cleanup | indent
+  # cd ../../
+  # echo pwd  | cleanup | indent
 
 
-  echo "Install MPC" | cleanup | indent
-  echo pwd  | cleanup | indent
-  mkdir mpc
-  cd mpc
-  curl -L --silent https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
-  tar -xzf mpc-1.2.1.tar.gz -C mpc-1.2.1 --strip-components 1
-  cd mpc-1.2.1
-  make
-  make check
-  make install
+  # echo "Install MPC" | cleanup | indent
+  # echo pwd  | cleanup | indent
+  # mkdir mpc
+  # cd mpc
+  # curl -L --silent https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
+  # tar -xzf mpc-1.2.1.tar.gz -C mpc-1.2.1 --strip-components 1
+  # cd mpc-1.2.1
+  # make
+  # make check
+  # make install
 
-  echo pwd  | cleanup | indent
-  cd ../../
-  echo pwd  | cleanup | indent
+  # echo pwd  | cleanup | indent
+  # cd ../../
+  # echo pwd  | cleanup | indent
 
 
   echo "Installing dependencies" | cleanup | indent
