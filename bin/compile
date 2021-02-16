@@ -63,7 +63,6 @@ else
   # ./autobuild --install-python  | cleanup | indent
 
   echo "Installing dependencies" | cleanup | indent
-  
   /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
   #/app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
