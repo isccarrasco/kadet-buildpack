@@ -62,6 +62,8 @@ else
   # echo "Install GOSDT as Python lib" | cleanup | indent
   # ./autobuild --install-python  | cleanup | indent
 
+  #https://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
+
   echo "Installing dependencies" | cleanup | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
