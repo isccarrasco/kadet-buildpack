@@ -62,21 +62,21 @@ else
   # echo "Install GOSDT as Python lib" | cleanup | indent
   # ./autobuild --install-python  | cleanup | indent
 
-  echo "Install GMP" | cleanup | indent
-  echo "$(pwd)"  | cleanup | indent
-  mkdir gmp
-  cd gmp
-  curl -L --silent https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
-  tar -xzf gmp-6.2.1.tar.lz -C gmp-6.2.1 --strip-components 1
-  cd gmp-6.2.1
-  # ./configure
-  make
-  make check
-  make install
+  # echo "Install GMP" | cleanup | indent
+  # echo "$(pwd)"  | cleanup | indent
+  # mkdir gmp
+  # cd gmp
+  # curl -L --silent https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
+  # tar -xzf gmp-6.2.1.tar.lz -C gmp-6.2.1 --strip-components 1
+  # cd gmp-6.2.1
+  # # ./configure
+  # make
+  # make check
+  # make install
 
-  echo pwd | cleanup | indent
-  cd ../../
-  echo pwd | cleanup | indent
+  # echo pwd | cleanup | indent
+  # cd ../../
+  # echo pwd | cleanup | indent
 
 
   # echo "Install MPFR" | cleanup | indent
