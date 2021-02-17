@@ -117,7 +117,7 @@ else
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
   /app/.heroku/python/bin/pip install ipython | indent
   
-  /app/.heroku/python/bin/pip install gmpy2 | indent
+  /app/.heroku/python/bin/pip install gmpy2==2.1.0a1 | indent
   echo "======== finishing dependencies instalation ======" | indent
 
   # echo "Installing KADET from git repository"  | indent
