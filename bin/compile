@@ -115,8 +115,8 @@ else
   /app/.heroku/python/bin/python -m pip install --upgrade pip | indent
   /app/.heroku/python/bin/pip install sklearn | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
+  /app/.heroku/python/bin/pip install ipython | indent
   
-  #/app/.heroku/python/bin/pip install ipython | indent
   /app/.heroku/python/bin/pip install gmpy2 | indent
   echo "======== finishing dependencies instalation ======" | indent
 
