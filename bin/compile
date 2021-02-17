@@ -15,9 +15,9 @@ indent() {
   sed -u 's/^/       /'
 }
 
-cleanup() {
-  sed -e 's/\.\.\.\+/.../g' | sed -e '/already satisfied/Id' | sed -e '/No files were found to uninstall/Id' | sed -e '/Overwriting/Id' | sed -e '/python executable/Id' | sed -e '/no previously-included files/Id'
-}
+# cleanup() {
+#   sed -e 's/\.\.\.\+/.../g' | sed -e '/already satisfied/Id' | sed -e '/No files were found to uninstall/Id' | sed -e '/Overwriting/Id' | sed -e '/python executable/Id' | sed -e '/no previously-included files/Id'
+# }
 
 export_env_dir() {
   env_dir=$1
@@ -41,29 +41,29 @@ if [ ! -f "$ENV_DIR/BITBUCKET_TOKEN" ]; then
   echo "The BITBUCKET_TOKEN variable for accessing the repository is missing."
   exit 1
 else
-  echo "Loading variables" | cleanup | indent
+  echo "Loading variables" | indent
   export_env_dir $ENV_DIR
 
-  # echo "Installing gosdt library" | cleanup | indent
-  # git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | cleanup | indent
+  # echo "Installing gosdt library" | indent
+  # git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | indent
   # cd gosdt
   # mkdir m4
 
   # mkdir bin
   # export DESTDIR="/app/gosdt/bin"
 
-  # echo "Preparing missing variables" | cleanup | indent
-  # aclocal  | cleanup | indent
-  # automake --add-missing  | cleanup | indent
+  # echo "Preparing missing variables" | indent
+  # aclocal  | indent
+  # automake --add-missing  | indent
 
-  # echo "Configure and Install GOSDT" | cleanup | indent
-  # ./autobuild --install  | cleanup | indent
+  # echo "Configure and Install GOSDT" | indent
+  # ./autobuild --install  | indent
 
-  # echo "Install GOSDT as Python lib" | cleanup | indent
-  # ./autobuild --install-python  | cleanup | indent
+  # echo "Install GOSDT as Python lib" | indent
+  # ./autobuild --install-python  | indent
 
-  # echo "Install GMP" | cleanup | indent
-  # echo "$(pwd)"  | cleanup | indent
+  # echo "Install GMP" | indent
+  # echo "$(pwd)"  | indent
   # mkdir gmp
   # cd gmp
   # curl -L --silent https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
@@ -74,13 +74,13 @@ else
   # make check
   # make install
 
-  # echo pwd | cleanup | indent
+  # echo pwd | indent
   # cd ../../
-  # echo pwd | cleanup | indent
+  # echo pwd | indent
 
 
-  # echo "Install MPFR" | cleanup | indent
-  # echo pwd  | cleanup | indent
+  # echo "Install MPFR" | indent
+  # echo pwd  | indent
   # mkdir mpfr
   # cd mpfr
   # curl -L --silent https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
@@ -90,13 +90,13 @@ else
   # make check
   # make install
 
-  # echo pwd  | cleanup | indent
+  # echo pwd  | indent
   # cd ../../
-  # echo pwd  | cleanup | indent
+  # echo pwd  | indent
 
 
-  # echo "Install MPC" | cleanup | indent
-  # echo pwd  | cleanup | indent
+  # echo "Install MPC" | indent
+  # echo pwd  | indent
   # mkdir mpc
   # cd mpc
   # curl -L --silent https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
@@ -106,21 +106,21 @@ else
   # make check
   # make install
 
-  # echo pwd  | cleanup | indent
+  # echo pwd  | indent
   # cd ../../
-  # echo pwd  | cleanup | indent
+  # echo pwd  | indent
 
 
-  echo "Installing dependencies" | cleanup | indent
-  /app/.heroku/python/bin/python -m pip install --upgrade pip  | cleanup | indent
-  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | cleanup | indent
-  #/app/.heroku/python/bin/pip install sklearn numpy pandas | cleanup | indent
-  #/app/.heroku/python/bin/pip install ipython  | cleanup | indent
-  /app/.heroku/python/bin/pip install gmpy2  | cleanup | indent
-  echo "finishing dependencies instalation"  | cleanup | indent
+  echo "Installing dependencies" | indent
+  /app/.heroku/python/bin/python -m pip install --upgrade pip | indent
+  /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
+  #/app/.heroku/python/bin/pip install sklearn numpy pandas | indent
+  #/app/.heroku/python/bin/pip install ipython | indent
+  /app/.heroku/python/bin/pip install gmpy2 | indent
+  echo "finishing dependencies instalation" | indent
 
-  # echo "Installing KADET from git repository"  | cleanup | indent
-  # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | cleanup | indent
+  # echo "Installing KADET from git repository"  | indent
+  # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
 
 fi | indent
 
