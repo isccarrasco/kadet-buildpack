@@ -41,7 +41,7 @@ if [ ! -f "$ENV_DIR/BITBUCKET_TOKEN" ]; then
   echo "The BITBUCKET_TOKEN variable for accessing the repository is missing."
   exit 1
 else
-  echo "Loading variables" | indent
+  echo "Loading Environment Variables" | indent
   export_env_dir $ENV_DIR
 
   # echo "Installing gosdt library" | indent
@@ -111,13 +111,13 @@ else
   # echo pwd  | indent
 
 
-  echo "Installing dependencies" | indent
+  echo "======== Installing Python Dependencies ========" | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
   #/app/.heroku/python/bin/pip install sklearn numpy pandas | indent
   #/app/.heroku/python/bin/pip install ipython | indent
   /app/.heroku/python/bin/pip install gmpy2 | indent
-  echo "finishing dependencies instalation" | indent
+  echo "======== finishing dependencies instalation ======" | indent
 
   # echo "Installing KADET from git repository"  | indent
   # /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
