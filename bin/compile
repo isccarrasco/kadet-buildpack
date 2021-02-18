@@ -32,7 +32,7 @@ export_env_dir() {
   fi
 }
 
-echo "-----> Installing packages required for KADET-Core" | indent
+echo "-----> Installing packages required for KADET-Core"  | indent
 
 # if BITBUCKET_TOKEN variable exists, install the KADET-Core library
 # otherwise error
@@ -44,23 +44,23 @@ else
   echo "Loading Environment Variables" | indent
   export_env_dir $ENV_DIR
 
-  # echo "Installing gosdt library" | indent
-  # git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | indent
-  # cd gosdt
-  # mkdir m4
+  echo "Installing gosdt library" | indent
+  git clone https://github.com/Jimmy-Lin/GeneralizedOptimalSparseDecisionTrees.git gosdt  | indent
+  cd gosdt
+  mkdir m4
 
-  # mkdir bin
-  # export DESTDIR="/app/gosdt/bin"
+  mkdir bin
+  export DESTDIR="/app/gosdt/bin"
 
-  # echo "Preparing missing variables" | indent
-  # aclocal  | indent
-  # automake --add-missing  | indent
+  echo "Preparing missing variables" | indent
+  aclocal  | indent
+  automake --add-missing  | indent
 
-  # echo "Configure and Install GOSDT" | indent
-  # ./autobuild --install  | indent
+  echo "Configure and Install GOSDT" | indent
+  ./autobuild --install  | indent
 
-  # echo "Install GOSDT as Python lib" | indent
-  # ./autobuild --install-python  | indent
+  echo "Install GOSDT as Python lib" | indent
+  ./autobuild --install-python  | indent
 
   # echo "Install GMP" | indent
   # echo "$(pwd)"  | indent
@@ -125,3 +125,4 @@ else
   /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
 
 fi | indent
+
