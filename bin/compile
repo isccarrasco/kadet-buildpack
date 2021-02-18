@@ -71,7 +71,7 @@ else
 
   /app/.heroku/python/bin/pip install sklearn | indent
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
-  /app/.heroku/python/bin/pip install ipython | indent
+  # /app/.heroku/python/bin/pip install ipython | indent
   
 
   echo "Installing KADET Core from git repository"  | indent
