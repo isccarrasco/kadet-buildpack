@@ -62,56 +62,7 @@ else
   echo "Install GOSDT as Python lib" | indent
   ./autobuild --install-python  | indent
 
-  # echo "Install GMP" | indent
-  # echo "$(pwd)"  | indent
-  # mkdir gmp
-  # cd gmp
-  # curl -L --silent https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
-  # tar -xzf gmp-6.2.1.tar.lz -C gmp-6.2.1 --strip-components 1
-  # cd gmp-6.2.1
-  # # ./configure
-  # make
-  # make check
-  # make install
-
-  # echo pwd | indent
-  # cd ../../
-  # echo pwd | indent
-
-
-  # echo "Install MPFR" | indent
-  # echo pwd  | indent
-  # mkdir mpfr
-  # cd mpfr
-  # curl -L --silent https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
-  # tar -xzf mpfr-4.1.0.tar.xz -C mpfr-4.1.0 --strip-components 1
-  # cd mpfr-4.1.0
-  # make
-  # make check
-  # make install
-
-  # echo pwd  | indent
-  # cd ../../
-  # echo pwd  | indent
-
-
-  # echo "Install MPC" | indent
-  # echo pwd  | indent
-  # mkdir mpc
-  # cd mpc
-  # curl -L --silent https://ftp.gnu.org/gnu/mpc/mpc-1.2.1.tar.gz
-  # tar -xzf mpc-1.2.1.tar.gz -C mpc-1.2.1 --strip-components 1
-  # cd mpc-1.2.1
-  # make
-  # make check
-  # make install
-
-  # echo pwd  | indent
-  # cd ../../
-  # echo pwd  | indent
-
-
-  echo "======== Installing Python Dependencies ========" | indent
+  echo "Installing Python Dependencies" | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip | indent
   /app/.heroku/python/bin/pip install gmpy2==2.1.0a1 | indent
 
@@ -119,7 +70,6 @@ else
   /app/.heroku/python/bin/pip install Cython --install-option="--no-cython-compile"  | indent
   /app/.heroku/python/bin/pip install ipython | indent
   
-  echo "======== finishing dependencies instalation ======" | indent
 
   echo "Installing KADET Core from git repository"  | indent
   /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
