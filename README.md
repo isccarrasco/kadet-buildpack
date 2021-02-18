@@ -16,3 +16,37 @@ heroku buildpacks:add --index 3 https://github.com/isccarrasco/kadet-buildpack
 ```
 
 This will add the buildpack to compile and install the GOSDT library which is used on the KADET project.
+
+In the setting section of the heroku project, add the next variables.
+
+```
+BITBUCKET_USERNAME=isccarrasco
+BITBUCKET_TOKEN=***
+```
+
+The `Aptfile` is required in the source project and should contain
+
+```
+autotools-dev
+automake
+autoconf
+g++
+
+libboost-dev
+libtbb-dev
+ocl-icd-opencl-dev
+
+graphviz
+graphviz-dev
+python3-dev
+
+libmpc3
+libmpfr6
+
+libmpfr-dev
+libmpc-dev
+libgmp3-dev
+
+python-gmpy2-common
+python3-gmpy2
+```

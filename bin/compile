@@ -75,7 +75,7 @@ else
   
 
   echo "Installing KADET Core from git repository"  | indent
-  /app/.heroku/python/bin/pip install git+https://isccarrasco:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
+  /app/.heroku/python/bin/pip install git+https://$BITBUCKET_USERNAME:$BITBUCKET_TOKEN@bitbucket.org/koneksys/automl_decision_trees.git#egg=kadet-lib  | indent
 
 fi | indent
 
