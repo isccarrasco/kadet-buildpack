@@ -62,6 +62,9 @@ else
   echo "Install GOSDT as Python lib" | indent
   ./autobuild --install-python  | indent
 
+  cd ..
+  rm -rf gosdt
+
   echo "Installing Python Dependencies" | indent
   /app/.heroku/python/bin/python -m pip install --upgrade pip | indent
   /app/.heroku/python/bin/pip install gmpy2==2.1.0a1 | indent
